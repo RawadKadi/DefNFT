@@ -1,0 +1,96 @@
+{
+  "name": "soft-ui-dashboard-react",
+  "version": "4.0.0",
+  "author": "Creative Tim",
+  "license": "SEE LICENSE IN <https://www.creative-tim.com/license>",
+  "description": "ReactJS version of Soft UI Dashboard by Creative Tim",
+  "bugs": {
+    "url": "https://github.com/creativetimofficial/soft-ui-dashboard-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativetimofficial/soft-ui-dashboard-react.git"
+  },
+  "engines": {
+    "node": "14 || 15 || 16",
+    "npm": ">=6"
+  },
+  "dependencies": {
+    "@coinbase/wallet-sdk": "^3.6.1",
+    "@emotion/cache": "11.9.3",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "11.9.3",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "5.8.4",
+    "@mui/material": "5.8.6",
+    "@mui/styled-engine": "5.8.0",
+    "@nextui-org/react": "^1.0.0-beta.10",
+    "@solana/wallet-adapter-base": "^0.9.18",
+    "@solana/wallet-adapter-react": "^0.15.24",
+    "@solana/wallet-adapter-react-ui": "^0.9.22",
+    "@solana/wallet-adapter-wallets": "^0.19.5",
+    "@solana/web3.js": "^1.66.2",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.3.0",
+    "@testing-library/user-event": "14.2.1",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "axios": "^1.2.2",
+    "chart.js": "3.4.1",
+    "chroma-js": "2.4.2",
+    "date-fns": "^2.29.3",
+    "ethers": "^5.7.2",
+    "firebase": "^9.17.1",
+    "helmet": "^6.0.1",
+    "next": "^13.0.6",
+    "path": "^0.12.7",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-chartjs-2": "3.0.4",
+    "react-countup": "6.3.0",
+    "react-dom": "^18.2.0",
+    "react-flatpickr": "3.10.13",
+    "react-router-dom": "6.3.0",
+    "react-scripts": "5.0.1",
+    "serve-favicon": "^2.5.0",
+    "stream": "^0.0.2",
+    "stylis": "4.1.1",
+    "stylis-plugin-rtl": "2.1.1",
+    "uuid": "8.3.2",
+    "web-vitals": "^2.1.4",
+    "web3": "^1.8.1",
+    "web3modal": "^1.9.9"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "install:peer-deps": "npm install --legacy-peer-deps"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "prettier": "2.7.1"
+  }
+}

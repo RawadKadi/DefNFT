@@ -1,0 +1,95 @@
+/**
+=========================================================
+* Soft UI Dashboard React - v4.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+import React, { useState } from "react";
+//react-icons/ai
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { BsImages } from "react-icons/bs";
+import Image from "next/image";
+// @mui material components
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Icon from "@mui/material/Icon";
+
+// Soft UI Dashboard React components
+import SoftBox from "components/SoftBox";
+import SoftTypography from "components/SoftTypography";
+
+// Images
+import wavesWhite from "assets/images/shapes/waves-white.svg";
+import rocketWhite from "assets/images/illustrations/rocket-white.png";
+import nft from "assets/images/small-logos/nft-image.jpg";
+import Style from "../Nft_cards/NFTCard.module.css";
+
+export default function NFTCard  ({ image, title, description })  {
+  const [like, setLike] = useState(true);
+
+  const likeNft = () => {
+    if (!like) {
+      setLike(true);
+    } else {
+      setLike(false);
+    }
+  };
+
+  return (
+    <div className={Style.NFTCard}>
+      <div className={Style.NFTCard_box} key={i + 1}>
+        <div className={Style.NFTCard_box_img}>
+          <img
+            src={image}
+            alt={title}
+            width={600}
+            height={600}
+            className={Style.NFTCard_box_img_img}
+          />
+        </div>
+        <div className={Style.NFTCard_box_description}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <button>Read More</button>
+        </div>
+        <div className={Style.NFTCard_box_update}>
+          <div className={Style.NFTCard_box_update_left}>
+            <div className={Style.NFTCard_box_update_left_like} onClick={() => likeNft()}>
+              {like ? (
+                <AiOutlineHeart></AiOutlineHeart>
+              ) : (
+                <AiFillHeart className={Style.NFTCard_box_update_left_like_icon}></AiFillHeart>
+              )}
+              {""} 22
+            </div>
+          </div>
+          <div className={Style.NFTCard_box_update_right}>
+            <div className={Style.NFTCard_box_update_right_info}>
+              <small>Remaining Time</small>
+              <p>3h 15m 20s :</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export function NFTList({ cards }) {
+  return (
+    <div className="nft-cards">
+      {cards.map((card) => (
+        <NFTCard key={card.title} {...card} />
+      ))}
+    </div>
+  );
+}
+
+
