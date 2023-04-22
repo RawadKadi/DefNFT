@@ -11,7 +11,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "import", "prettier"],
+  "plugins": ["import", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/require-default-props": "off",
@@ -24,7 +24,12 @@
     "react": {
       "version": "detect"
     },
-    "import/resolver": { "node": { "moduleDirectory": ["node_modules", "src/"] } }
+    "import/resolver": { "node": { "moduleDirectory": ["node_modules", "src/"] } },
+    "eslint-plugin-react": {
+      "settings": {
+        "configFile": "C:/Users/Rawad kadi/node_modules/eslint-config-react-app/base.js"
+      }
+    }
   },
   "globals": {
     "JSX": true

@@ -35,8 +35,8 @@ function SidenavCard() {
   const { miniSidenav, sidenavColor } = controller;
 
   return (
-    <Card sx={(theme) => card(theme, { miniSidenav })}>
-      <CardContent sx={(theme) => cardContent(theme, { sidenavColor })}>
+    <Card sx={(theme) => card(theme, { miniSidenav })} >
+      <CardContent sx={(theme) => cardContent(theme, { sidenavColor })} >
         <SoftBox
           bgColor="white"
           width="2rem"

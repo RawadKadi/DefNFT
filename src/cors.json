@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["*"],
+      "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600,
+      "responseHeader": ["Content-Type", "x-goog-meta-foo", "x-amz-meta-foo", "x-amz-server-side-encryption", "x-amz-request-id", "x-amz-id-2", "ETag"]
+    }
+  ]

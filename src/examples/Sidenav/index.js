@@ -129,7 +129,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
   return (
     <SidenavRoot {...rest} variant="permanent" ownerState={{ transparentSidenav, miniSidenav }}>
-      <SoftBox pt={3} pb={1} px={4} textAlign="center">
+      <SoftBox pt={3} pb={1} px={4} textAlign="center" >
         <SoftBox
           display={{ xs: "block", xl: "none" }}
           position="absolute"

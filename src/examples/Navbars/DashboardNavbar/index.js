@@ -186,7 +186,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                   variant="contained"
                   size="small"
                   mx={50}
-                  style={{ backgroundColor: "#1CC2DD", textColor:"white" }}
+                  style={{ backgroundColor: "#1b1774", textColor:"white" }}
                   onClick={connectWallet}
                     
                   
