@@ -1,32 +1,19 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
-import nft from "../../../../../src/assets/images/NFT's/nft1.jpg"
+import nft from "../../../../../src/assets/images/NFT's/nft1.jpg";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
-
+import { IconButton } from "@mui/material";
+import { Forward } from "@mui/icons-material";
 // Images
 import wavesWhite from "assets/images/shapes/waves-white.svg";
 import rocketWhite from "assets/images/illustrations/rocket-white.png";
 
-function BuildByDevelopers() {
+function BuildByDevelopers(image,name) {
   return (
     <Card>
       <SoftBox p={2}>
@@ -34,16 +21,16 @@ function BuildByDevelopers() {
           <Grid item xs={12} lg={6}>
             <SoftBox display="flex" flexDirection="column" height="100%">
               <SoftBox pt={1} mb={0.5}>
-                <SoftTypography variant="body2" color="text" fontWeight="medium">
+                {/* <SoftTypography variant="body2" color="text" fontWeight="medium">
                   Build by developers
-                </SoftTypography>
+                </SoftTypography> */}
               </SoftBox>
-              <SoftTypography variant="h5" fontWeight="bold" gutterBottom>
-              7,777 Unique Hand-Crafted Digital Art Pieces Bringing the Creators of Web3 Together — Creator's Interview
+              <SoftTypography fontWeight="bold" gutterBottom>
+                hey{" "}
               </SoftTypography>
               <SoftBox mb={6}>
                 <SoftTypography variant="body2" color="text">
-                  20 hours ago
+                  hey
                 </SoftTypography>
               </SoftBox>
               <SoftTypography
@@ -71,7 +58,9 @@ function BuildByDevelopers() {
                 }}
               >
                 Read More
-                <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
+                <IconButton>
+                  <Forward sx={{ fontWeight: "bold" }} />
+                </IconButton>{" "}
               </SoftTypography>
             </SoftBox>
           </Grid>
@@ -95,7 +84,15 @@ function BuildByDevelopers() {
                 width="100%"
                 height="100%"
               />
-              <SoftBox component="img" src={nft} alt="rocket" width="100%" pt={0} borderRadius="10px" bgColor="white" />
+              <SoftBox
+                component="img"
+                src={image}
+                alt="rocket"
+                width="100%"
+                pt={0}
+                borderRadius="10px"
+                bgColor="white"
+              />
             </SoftBox>
           </Grid>
         </Grid>

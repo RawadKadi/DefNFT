@@ -16,10 +16,12 @@ Coded by www.creative-tim.com
 // @mui material components
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
+import IconButton from '@material-ui/core/IconButton';
 
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Images
 import ivancik from "assets/images/ivancik.jpg";
@@ -59,6 +61,8 @@ function WorkWithTheRockets() {
             href="#"
             variant="button"
             color="white"
+            endIcon={<ArrowForwardIcon />}
+
             fontWeight="medium"
             sx={{
               mt: "auto",
@@ -78,8 +82,9 @@ function WorkWithTheRockets() {
               },
             }}
           >
-            Read More
-            <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
+            Read More<IconButton>
+        <ArrowForwardIcon />
+      </IconButton>
           </SoftTypography>
         </SoftBox>
       </SoftBox>

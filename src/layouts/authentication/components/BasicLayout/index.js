@@ -33,7 +33,7 @@ import Footer from "layouts/authentication/components/Footer";
 function BasicLayout({ title, description, image, children }) {
   return (
     <PageLayout>
-      <DefaultNavbar
+      {/* <DefaultNavbar
         action={{
           type: "external",
           route: "https://creative-tim.com/product/soft-ui-dashboard-react",
@@ -41,7 +41,7 @@ function BasicLayout({ title, description, image, children }) {
         }}
         transparent
         light
-      />
+      /> */}
       <SoftBox
         width="calc(100% - 2rem)"
         minHeight="50vh"
@@ -70,7 +70,7 @@ function BasicLayout({ title, description, image, children }) {
               </SoftTypography>
             </SoftBox>
             <SoftBox mb={2}>
-              <SoftTypography variant="body2" color="white" fontWeight="regular">
+              <SoftTypography variant="h5" color="white" fontWeight="regular">
                 {description}
               </SoftTypography>
             </SoftBox>
@@ -84,7 +84,7 @@ function BasicLayout({ title, description, image, children }) {
           </Grid>
         </Grid>
       </SoftBox>
-      <Footer />
+      
     </PageLayout>
   );
 }

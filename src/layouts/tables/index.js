@@ -41,7 +41,7 @@ function Tables() {
         <SoftBox mb={3}>
           <Card>
             <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">Authors table</SoftTypography>
+              <SoftTypography variant="h1" style={{color:"#1b1774"}}>Marketplaces</SoftTypography>
             </SoftBox>
             <SoftBox
               sx={{
@@ -75,7 +75,6 @@ function Tables() {
           </SoftBox>
         </Card>
       </SoftBox>
-      <Footer />
     </DashboardLayout>
   );
 }

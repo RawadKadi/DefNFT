@@ -1,0 +1,30 @@
+.card {
+    position: relative;
+    transition: all 0.6s ease;
+    /* Rest of your CSS */
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(45deg, #05cff7, #1b1774);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  .card:hover .job-title {
+    color: #ffffff;
+  }
+  
+  .card:hover .viewBtn {
+    color: "#1b1774";
+    backgroundColor: "#ffffff";
+  }

@@ -6,6 +6,10 @@ import Icon from "@mui/material/Icon";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftProgress from "components/SoftProgress";
+import opensea from "assets/images/marketplaces/opensea.png";
+import Rarible from "assets/images/marketplaces/Rarible.png"
+import niftygateway from "assets/images/marketplaces/niftygateway.png"
+import magicEden from "assets/images/marketplaces/magicEden.jpg"
 
 // Images
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
@@ -36,104 +40,55 @@ const action = (
 
 const projectsTableData = {
   columns: [
-    { name: "project", align: "left" },
-    { name: "budget", align: "left" },
-    { name: "status", align: "left" },
-    { name: "completion", align: "center" },
-    { name: "action", align: "center" },
+    { name: "Marketplace", align: "left" },
+    { name: "Trading_Volume", align: "left" },
+    { name: "Total_NFT_Sales", align: "center" },
   ],
 
   rows: [
     {
-      project: [logoSpotify, "Spotift"],
-      budget: (
+      Marketplace: [opensea, "OpenSea"],
+      Trading_Volume: (
         <SoftTypography variant="button" color="text" fontWeight="medium">
-          $2,500
+          $107 million
         </SoftTypography>
       ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          working
+
+      Total_NFT_Sales: <Completion value={ 73.8} color="info" />,
+    },
+    {
+      Marketplace: [Rarible, "Rarible"],
+      Trading_Volume: (
+        <SoftTypography variant="button" color="text" fontWeight="medium">
+          $19.28{" "}
         </SoftTypography>
       ),
-      completion: <Completion value={60} color="info" />,
+
+      Total_NFT_Sales: <Completion value={0.41} color="red" />,
+    },
+    {
+      Marketplace: [niftygateway, "NiftyGateway"],
+      Trading_Volume: (
+        <SoftTypography variant="button" color="text" fontWeight="medium">
+          $8.95 million
+        </SoftTypography>
+      ),
+      
+      Total_NFT_Sales: <Completion value={117} color="success" />,
       action,
     },
     {
-      project: [logoInvesion, "Invesion"],
-      budget: (
+      Marketplace: [magicEden, "Magic Eden"],
+      Trading_Volume: (
         <SoftTypography variant="button" color="text" fontWeight="medium">
-          $5,000
+          104,820 SOL
         </SoftTypography>
       ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          done
-        </SoftTypography>
-      ),
-      completion: <Completion value={100} color="success" />,
+      
+      Total_NFT_Sales: <Completion value={69} color="medium" />,
       action,
     },
-    {
-      project: [logoJira, "Jira"],
-      budget: (
-        <SoftTypography variant="button" color="text" fontWeight="medium">
-          $3,400
-        </SoftTypography>
-      ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          canceled
-        </SoftTypography>
-      ),
-      completion: <Completion value={30} color="error" />,
-      action,
-    },
-    {
-      project: [logoSlack, "Slack"],
-      budget: (
-        <SoftTypography variant="button" color="text" fontWeight="medium">
-          $1,400
-        </SoftTypography>
-      ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          canceled
-        </SoftTypography>
-      ),
-      completion: <Completion value={0} color="error" />,
-      action,
-    },
-    {
-      project: [logoWebDev, "Webdev"],
-      budget: (
-        <SoftTypography variant="button" color="text" fontWeight="medium">
-          $14,000
-        </SoftTypography>
-      ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          working
-        </SoftTypography>
-      ),
-      completion: <Completion value={80} color="info" />,
-      action,
-    },
-    {
-      project: [logoXD, "Adobe XD"],
-      budget: (
-        <SoftTypography variant="button" color="text" fontWeight="medium">
-          $2,300
-        </SoftTypography>
-      ),
-      status: (
-        <SoftTypography variant="caption" color="text" fontWeight="medium">
-          done
-        </SoftTypography>
-      ),
-      completion: <Completion value={100} color="success" />,
-      action,
-    },
+    
   ],
 };
 

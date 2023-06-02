@@ -27,7 +27,7 @@ import NFTList from "layouts/dashboard/components/Nft_cards";
 import NFTCardDetail from "layouts/dashboard/components/NFTDetails/NFTCardDetail";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
-
+import { keyframes } from "@emotion/react";
 // Soft UI Dashboard React examples
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
@@ -35,6 +35,7 @@ import Configurator from "examples/Configurator";
 // Soft UI Dashboard React themes
 import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
 // RTL plugins
 import rtlPlugin from "stylis-plugin-rtl";
@@ -49,7 +50,7 @@ import { useSoftUIController, setMiniSidenav, setOpenConfigurator } from "contex
 import Web3Jobs from "layouts/web3Jobs/index";
 import JobCard from "layouts/jobCard/jobCard";
 // Images
-import brand from "assets/images/logo-ct.png";
+import brand from "assets/images/logos/logoStrive.png";
 
 import JobsData from "./JobsData";
 import { Grid } from "@mui/material";
@@ -71,7 +72,6 @@ import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 const providerOptions = {};
-
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -112,8 +112,6 @@ export default function App() {
   // Change the openConfigurator state
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
- 
-
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
@@ -126,7 +124,18 @@ export default function App() {
 
       return null;
     });
-    
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+  const bounce = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+`;
   const configsButton = (
     <SoftBox
       display="flex"
@@ -142,12 +151,13 @@ export default function App() {
       bottom="2rem"
       zIndex={99}
       color="dark"
-      sx={{ cursor: "pointer" }}
-      onClick={handleConfiguratorOpen}
+      sx={{
+        cursor: "pointer",
+        animation: `${bounce} 2s infinite`,
+      }}
+      onClick={scrollToTop}
     >
-      <Icon fontSize="default" color="inherit">
-        settings
-      </Icon>
+      <ArrowUpwardIcon fontSize="default" color="inherit" />
     </SoftBox>
   );
 
@@ -164,7 +174,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={brand}
-              brandName="DefNFT"
+              brandName="Strive"
               routes={[
                 {
                   type: "collapse",
@@ -251,6 +261,7 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes.filter((route) => route.key !== "Web3 Jobs"))}
+
           <Route path="/web3-jobs" element={<Web3Jobs />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
@@ -264,7 +275,7 @@ export default function App() {
           <Sidenav
             color={sidenavColor}
             brand={brand}
-            brandName="DefNFT"
+            brandName="Strive"
             routes={[
               {
                 type: "collapse",
@@ -273,16 +284,6 @@ export default function App() {
                 route: "/dashboard",
                 icon: <Shop size="12px" />,
                 component: <Dashboard />,
-                noCollapse: true,
-              },
-
-              {
-                type: "collapse",
-                name: "NFT Marketplaces",
-                key: "tables",
-                route: "/tables",
-                icon: <CreditCard size="12px" />,
-                component: <Tables />,
                 noCollapse: true,
               },
               {
@@ -295,22 +296,32 @@ export default function App() {
               },
               {
                 type: "collapse",
-                name: "Virtual Reality",
-                key: "virtual-reality",
-                route: "/virtual-reality",
-                icon: <Cube size="12px" />,
-                component: <VirtualReality />,
+                name: "NFT Marketplaces",
+                key: "tables",
+                route: "/tables",
+                icon: <CreditCard size="12px" />,
+                component: <Tables />,
                 noCollapse: true,
               },
-              {
-                type: "collapse",
-                name: "RTL",
-                key: "rtl",
-                route: "/rtl",
-                icon: <Settings size="12px" />,
-                component: <RTL />,
-                noCollapse: true,
-              },
+
+              // {
+              //   type: "collapse",
+              //   name: "Virtual Reality",
+              //   key: "virtual-reality",
+              //   route: "/virtual-reality",
+              //   icon: <Cube size="12px" />,
+              //   component: <VirtualReality />,
+              //   noCollapse: true,
+              // },
+              // {
+              //   type: "collapse",
+              //   name: "RTL",
+              //   key: "rtl",
+              //   route: "/rtl",
+              //   icon: <Settings size="12px" />,
+              //   component: <RTL />,
+              //   noCollapse: true,
+              // },
               { type: "title", title: "Account Pages", key: "account-pages" },
               {
                 type: "collapse",

@@ -29,35 +29,60 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
 import Footer from "layouts/authentication/components/Footer";
-
+import logo from "../../../../assets/images/logos/logoStrive.png";
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (
     <PageLayout background="white">
-      <DefaultNavbar
+      {/* <DefaultNavbar
         action={{
           type: "external",
           route: "https://creative-tim.com/product/soft-ui-dashboard-react",
           label: "free download",
           color: "dark",
         }}
-      />
+      /> */}
       <Grid
         container
         justifyContent="center"
         sx={{
-          minHeight: "75vh",
+          hiehgt: "200px",
           margin: 0,
         }}
       >
         <Grid item xs={11} sm={8} md={5} xl={3}>
-          <SoftBox mt={top}>
+          <SoftBox mt={2}>
             <SoftBox pt={3} px={3}>
               {!header ? (
                 <>
-                  <SoftBox mb={1}>
-                    <SoftTypography variant="h3" fontWeight="bold" color={color} textGradient>
-                      {title}
-                    </SoftTypography>
+                  <SoftBox mb={1} mt={20}>
+                    <Grid container spacing={2} alignItems="center">
+                      <Grid item xs={2} sm={3} md={3}>
+                        <SoftBox>
+                          <img
+                            src={logo}
+                            style={{ width: "5vw", objectFit: "cover" }}
+                            alt="Logo"
+                          />
+                        </SoftBox>
+                      </Grid>
+                      <Grid item xs={10} sm={9} md={9}>
+                        <SoftBox>
+                          <SoftTypography
+                            variant="h3"
+                            fontWeight="bold"
+                            color="#1b1774"
+                            textGradient
+                          >
+                            {title}
+                          </SoftTypography>
+                        </SoftBox>
+                        <SoftBox>
+                          <SoftTypography variant="h3" fontWeight="bold" color={color} textGradient>
+                            Strive
+                          </SoftTypography>
+                        </SoftBox>
+                      </Grid>
+                    </Grid>
                   </SoftBox>
                   <SoftTypography variant="body2" fontWeight="regular" color="text">
                     {description}
@@ -95,7 +120,7 @@ function CoverLayout({ color, header, title, description, image, top, children }
           </SoftBox>
         </Grid>
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </PageLayout>
   );
 }

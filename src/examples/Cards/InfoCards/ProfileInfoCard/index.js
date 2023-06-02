@@ -15,6 +15,9 @@ Coded by www.creative-tim.com
 
 // react-routers components
 import { Link } from "react-router-dom";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import React, { useState } from "react";
 
 // prop-types is library for typechecking of props
 import PropTypes from "prop-types";
@@ -33,7 +36,21 @@ import SoftTypography from "components/SoftTypography";
 import colors from "assets/theme/base/colors";
 import typography from "assets/theme/base/typography";
 
-function ProfileInfoCard({ title, description, info, social, action }) {
+function ProfileInfoCard({ title, description: initialDescription, info, social, action }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [description, setDescription] = useState(initialDescription);
+
+  // Handle edit icon click
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+    console.log("handleEditClick Function is working here!!!!!!!! ")
+  };
+
+  // Handle submit event
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsEditing(false);
+  };
   const labels = [];
   const values = [];
   const { socialMediaColors } = colors;
@@ -92,28 +109,36 @@ function ProfileInfoCard({ title, description, info, social, action }) {
         </SoftTypography>
         <SoftTypography component={Link} to={action.route} variant="body2" color="secondary">
           <Tooltip title={action.tooltip} placement="top">
-            <Icon>edit</Icon>
+            <IconButton
+              style={{ color: "#0b1847" }}
+              aria-label="edit"
+              component="span"
+              onClick={handleEditClick}
+            >
+              <EditIcon />
+            </IconButton>
           </Tooltip>
         </SoftTypography>
       </SoftBox>
       <SoftBox p={2}>
         <SoftBox mb={2} lineHeight={1}>
-          <SoftTypography variant="button" color="text" fontWeight="regular">
-            {description}
-          </SoftTypography>
-        </SoftBox>
-        <SoftBox opacity={0.3}>
-          <Divider />
-        </SoftBox>
-        <SoftBox>
-          {renderItems}
-          <SoftBox display="flex" py={1} pr={2}>
-            <SoftTypography variant="button" fontWeight="bold" textTransform="capitalize">
-              social: &nbsp;
+          {isEditing ? (
+            <form onSubmit={handleSubmit}>
+              <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                onBlur={handleSubmit}
+                autoFocus
+                style={{ width: "100%" }}
+              />
+            </form>
+          ) : (
+            <SoftTypography variant="button" color="text" fontWeight="regular">
+              {description}
             </SoftTypography>
-            {renderSocial}
-          </SoftBox>
+          )}
         </SoftBox>
+        {/* ... (other JSX elements) */}
       </SoftBox>
     </Card>
   );

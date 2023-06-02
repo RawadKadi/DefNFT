@@ -14,6 +14,11 @@ Coded by www.creative-tim.com
 */
 
 import { useState, useEffect } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import { getAuth, deleteUser } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
+import { auth, firestore } from '../../firebase/config.js';
 
 // @mui material components
 import Divider from "@mui/material/Divider";
@@ -83,6 +88,27 @@ function Configurator() {
       opacity: 1,
     },
   });
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteUser(auth.currentUser);
+      handleClose();
+      navigate("/authentication/sign-in", { replace: true });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const [showDialog, setShowDialog] = useState(false);
+  const handleDeleteClick = () => {
+    setShowDialog(true);
+  };
+    const [showWarning, setShowWarning] = useState(false);
 
   return (
     <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
@@ -95,13 +121,12 @@ function Configurator() {
         px={3}
       >
         <SoftBox>
-          <SoftTypography variant="h5">Soft UI Configurator</SoftTypography>
+          <SoftTypography variant="h4">Settings</SoftTypography>
           <SoftTypography variant="body2" color="text">
-            See our dashboard options.
+            Customize
           </SoftTypography>
         </SoftBox>
-
-        <Icon
+        <CloseIcon
           sx={({ typography: { size, fontWeightBold }, palette: { dark } }) => ({
             fontSize: `${size.md} !important`,
             fontWeight: `${fontWeightBold} !important`,
@@ -111,9 +136,7 @@ function Configurator() {
             mt: 2,
           })}
           onClick={handleCloseConfigurator}
-        >
-          close
-        </Icon>
+        />
       </SoftBox>
 
       <Divider />
@@ -198,73 +221,68 @@ function Configurator() {
 
         <Divider />
 
-        <SoftBox mt={3} mb={2}>
-          <SoftBox mb={2}>
-            <SoftButton
-              component={Link}
-              href="https://www.creative-tim.com/product/soft-ui-dashboard-react"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-              variant="gradient"
-              fullWidth
-            >
-              free download
-            </SoftButton>
-          </SoftBox>
-          <SoftButton
-            component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
-            target="_blank"
-            rel="noreferrer"
-            color="dark"
-            variant="outlined"
-            fullWidth
-          >
-            view documentation
-          </SoftButton>
-        </SoftBox>
-        <SoftBox display="flex" justifyContent="center">
-          <a
-            className="github-button"
-            href="https://github.com/creativetimofficial/soft-ui-dashboard-react"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard-react on GitHub"
-          >
-            Star
-          </a>
-        </SoftBox>
         <SoftBox mt={3} textAlign="center">
           <SoftBox mb={0.5}>
-            <SoftTypography variant="h6">Thank you for sharing!</SoftTypography>
+            <SoftTypography variant="h6">Our Socials</SoftTypography>
           </SoftBox>
 
           <SoftBox display="flex" justifyContent="center">
             <SoftBox mr={1.5}>
               <SoftButton
                 component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%23mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-react"
+                href="//twitter.com"
                 target="_blank"
                 rel="noreferrer"
                 color="dark"
               >
                 <TwitterIcon />
-                &nbsp; Tweet
+                &nbsp; Twitter
               </SoftButton>
             </SoftBox>
             <SoftButton
               component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-react"
+              href="https://www.facebook.com/"
               target="_blank"
               rel="noreferrer"
               color="dark"
             >
               <FacebookIcon />
-              &nbsp; Share
+              &nbsp; Facebook
             </SoftButton>
           </SoftBox>
+        </SoftBox>
+        <Divider />
+        <SoftBox mb={1} display="flex" justifyContent="center">
+          {/* <SoftTypography variant="h6"  >Delete your account</SoftTypography> */}
+        </SoftBox>
+
+        <SoftBox display="flex" justifyContent="center">
+          <SoftBox mr={1.5}>
+            <Dialog open={showWarning} onClose={() => setShowWarning(false)}>
+              <DialogTitle>Are you sure you want to delete your account?</DialogTitle>
+              <DialogContent>
+                <p>This action cannot be undone.</p>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  onClick={handleConfirmDelete}
+                  style={{ backgroundColor: "red", color: "white" }}
+                >
+                  Delete
+                </Button>
+                <Button onClick={() => setShowWarning(false)}>Cancel</Button>
+              </DialogActions>
+            </Dialog>
+          </SoftBox>
+          {/* <SoftButton
+            component={Link}
+            onClick={() => setShowWarning(true)}
+            target="_blank"
+            rel="noreferrer"
+            style={{ backgroundColor: "red", color: "white" }}
+          >
+            &nbsp; Delete Account
+          </SoftButton> */}
         </SoftBox>
       </SoftBox>
     </ConfiguratorRoot>
